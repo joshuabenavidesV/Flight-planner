@@ -20,7 +20,11 @@ data = {
 response = requests.post(token_url, headers=headers, data=data)
 
 if response.status_code == 200:
-    print(response.json())
+    ## access_token = response.json().get('access_token') # Extracting access token
+    token_state = response.json().get('state') # Extracting token state
+    print("Token State:", token_state) 
+   ## print("Access Token:", access_token)
+    
 else:
     print("Failed to retrieve access token")
     exit()
